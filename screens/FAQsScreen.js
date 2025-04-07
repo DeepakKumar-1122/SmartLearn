@@ -11,17 +11,17 @@ const FAQsScreen = () => {
       question: "How does SmartLearn generate courses?",
       answer: "Courses are generated using the Google Gemini API, considering factors such as difficulty level, time commitment, and learning goals.",
     },
-    {
-      question: "Can I edit my learning path?",
-      answer: "Yes, you can modify the course schedule, reorder topics, and delete topics as needed.",
-    },
+    // {
+    //   question: "Can I edit my learning path?",
+    //   answer: "Yes, you can modify the course schedule, reorder topics, and delete topics as needed.",
+    // },
     {
       question: "What types of resources are included?",
       answer: "SmartLearn provides articles, videos, and interactive tutorials curated from various online platforms.",
     },
     {
       question: "Is there progress tracking?",
-      answer: "Yes, SmartLearn tracks your learning progress, including time spent on each lesson and overall course completion percentage.",
+      answer: "Yes, SmartLearn tracks your learning progress, including time spent and overall course completion percentage.",
     },
     {
       question: "How do notifications work?",

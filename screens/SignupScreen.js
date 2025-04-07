@@ -1,4 +1,3 @@
-import { API_BASE_URL } from '@env';
 import React, { useState } from "react";
 import {
   View,
@@ -22,7 +21,7 @@ const SignupScreen = ({ navigation }) => {
     }
     try {
       const response = await axios.post(
-        `${API_BASE_URL}/api/auth/signup`,
+        "/api/auth/signup",
         {
           name,
           email,

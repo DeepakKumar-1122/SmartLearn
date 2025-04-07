@@ -1,4 +1,3 @@
-import { API_BASE_URL } from '@env';
 import React, { useState, useEffect } from "react";
 import {
   View,
@@ -11,6 +10,7 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 
 const GenerateCourseForm = () => {
   const navigation = useNavigation();
@@ -55,30 +55,29 @@ const GenerateCourseForm = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/api/courses/generate`,
+      const response = await axios.post(
+        '/api/courses/generate',
         {
-          method: "POST",
+          courseName,
+          difficultyLevel,
+          schedulingFrequency,
+          timeCommitment,
+          learningGoals,
+          preferredResources,
+        },
+        {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            courseName,
-            difficultyLevel,
-            schedulingFrequency,
-            timeCommitment,
-            learningGoals,
-            preferredResources,
-          }),
+          }
         }
       );
 
-      const result = await response.json();
+      const result = response.data;
 
-      if (!response.ok) {
-        throw new Error(result.message, "Failed to generate course.");
-      }
+      if (result.message) {
+        throw new Error(result.message || "Failed to generate course.");
+      }    
 
       Alert.alert("Success", "Learning path generated successfully!");
 

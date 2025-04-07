@@ -1,4 +1,3 @@
-import { API_BASE_URL } from '@env';
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet } from "react-native";
 import axios from "axios";
@@ -15,7 +14,7 @@ const LoginScreen = ({ navigation }) => {
     }
     
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/auth/login`, {
+      const response = await axios.post("/api/auth/login", {
         email,
         password,
       });
